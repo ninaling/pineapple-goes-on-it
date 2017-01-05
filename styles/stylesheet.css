@@ -17,7 +17,7 @@ html body {
 #pizza {
   height: 600px;
   margin-top: 10vh; }
-  #pizza #cheese-drop {
+  #pizza #cheese-drop, #pizza #sauce-drop {
     opacity: 0; }
 
 /*# sourceMappingURL=stylesheet.css.map */

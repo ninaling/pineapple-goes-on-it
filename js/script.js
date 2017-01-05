@@ -2,21 +2,34 @@ $(document).ready(function(){
   window.addEventListener("keypress", checkKeyPressed, false);
 
   var pizzaSnap = Snap('#pizza');
-  var cheeseDropSnap = pizzaSnap.select('#cheese-drop');
-  cheeseDropSnap.attr({transform: 't0 -180'});
-  var cheeseDrop = $('#cheese-drop');
+  
+  var sauceSnap = pizzaSnap.select('#sauce-drop');
+  sauceSnap.attr({transform: 't0 -180'});
+  
+  var cheeseSnap = pizzaSnap.select('#cheese-drop');
+  cheeseSnap.attr({transform: 't0 -180'});
   
   function checkKeyPressed(e) {
     switch(e.keyCode){
       case 32:
-        if (cheeseDrop.css('opacity') == '0'){
-          cheeseDropSnap.animate({opacity: 1, transform: 't0 0'}, 350, function(){
-            cheeseDropSnap.animate({d: cheeseDropIntermediate}, 200, function(){
-              var cheeseFinalMask = pizzaSnap.path(cheeseDropMask).attr({id: 'cheese-mask', fill: '#ffffff'});
-              var g = pizzaSnap.group(cheeseDropSnap);
-              g.attr({mask: cheeseFinalMask});
-              cheeseDropSnap.animate({transform: 's5.5'}, 800);
-              cheeseAnimation(cheeseFinalMask);
+        if (sauceSnap.attr('opacity') == '0'){
+          sauceSnap.animate({opacity: 1, transform: 't0 0'}, 350, function(){
+            sauceSnap.animate({d: dropIntermediatePath}, 200, function(){
+              var sauceMaskSnap = pizzaSnap.path(sauceMask).attr({id: 'sauce-mask', fill: '#ffffff'});
+              var sauceSnapGroup = pizzaSnap.group(sauceSnap);
+              sauceSnapGroup.attr({mask: sauceMaskSnap});
+              sauceSnap.animate({transform: 's3'}, 800);
+            });
+          });
+        }
+        else if (cheeseSnap.attr('opacity') == '0'){
+          cheeseSnap.animate({opacity: 1, transform: 't0 0'}, 350, function(){
+            cheeseSnap.animate({d: dropIntermediatePath}, 200, function(){
+              var cheeseMaskSnap = pizzaSnap.path(cheeseMask).attr({id: 'cheese-mask', fill: '#ffffff'});
+              var cheeseSnapGroup = pizzaSnap.group(cheeseSnap);
+              cheeseSnapGroup.attr({mask: cheeseMaskSnap});
+              cheeseSnap.animate({transform: 's5.5'}, 1200);
+              cheeseAnimation(cheeseMaskSnap);
             });
           });
         }
@@ -25,11 +38,11 @@ $(document).ready(function(){
   }
   
   function cheeseAnimation(){
-    var cheeseMask = pizzaSnap.select('#cheese-mask');
-    cheeseMask.animate({d: cheeseMaskAnimationRoute}, 1500, mina.easeinout, cheeseAnimationBackward); 
+    var cheeseMaskSnap = pizzaSnap.select('#cheese-mask');
+    cheeseMaskSnap.animate({d: cheeseMaskRoute}, 1500, mina.easeinout, cheeseAnimationBackward); 
 
     function cheeseAnimationBackward(){
-      cheeseMask.animate({d: cheeseDropMask}, 1500, mina.easeinout, cheeseAnimation); 
+      cheeseMaskSnap.animate({d: cheeseMask}, 1500, mina.easeinout, cheeseAnimation); 
     }; 
   }
 });
