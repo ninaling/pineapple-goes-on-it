@@ -1,0 +1,23 @@
+html body {
+  margin: 0;
+  padding: 0; }
+
+#container {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #48C9B0; }
+
+#pizza {
+  height: 600px;
+  margin-top: 10vh; }
+  #pizza #cheese-drop {
+    opacity: 0; }
+
+/*# sourceMappingURL=stylesheet.css.map */
