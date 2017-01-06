@@ -18,15 +18,16 @@ html {
   display: -webkit-flex;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   
   background-color: #48C9B0;
 }
 
 #pizza {
-  height: 600px; 
-  margin-top: 10vh;
+  height: 70vh; 
+  max-width: 90vw;
+  margin-bottom: 5vh;
   
   #cheese-drop, #sauce-drop, path[class^="pepperoni"] {
     opacity: 0;
