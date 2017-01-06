@@ -28,7 +28,7 @@ html {
   height: 600px; 
   margin-top: 10vh;
   
-  #cheese-drop, #sauce-drop {
+  #cheese-drop, #sauce-drop, path[class^="pepperoni"] {
     opacity: 0;
   }
 }
